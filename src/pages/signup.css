@@ -1,0 +1,68 @@
+/* .signin{
+    background-color: aquamarine;
+} */
+.check-credentials-formsp{
+    margin: auto;
+    height: 600px;
+    width: 160%;
+    background-color: rgb(12, 12, 12);
+    
+}
+/* #input[type=text] {
+    margin-left: auto;
+    margin-right: auto;
+    padding-right: 100px;
+    padding-top: 30px;
+    padding-left: 20px;
+    width: 70%;
+    padding: 20px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid rgb(111, 21, 21);
+    box-sizing: border-box;
+  } */
+  #firstnamesp{
+    width: 80%;
+    
+    margin-left: 50px;
+  }
+  #lastnamesp{
+    width: 80%;
+    
+    margin-left: 50px;
+  }
+  #emailsp{
+    width: 80%;
+    
+    margin-left: 50px;
+   
+  }
+  #passwordsp{
+    width: 80%;
+    
+    margin-left: 50px;
+   
+  }
+  #confirmpasswordsp{
+    width: 80%;
+    
+    margin-left: 50px;
+  }
+  #phonesp{
+    width: 80%;
+    
+    margin-left: 50px;
+  }
+  #usernamesp{
+    width: 80%;
+    
+    margin-left: 50px;
+  }
+  .btnsignup{
+    color : rgba(227, 36, 185, 0.95);
+    margin-left: 100px;
+
+  }
+  #hint{
+    color: azure;
+}
