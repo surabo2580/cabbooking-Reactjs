@@ -3,6 +3,7 @@ import Select from 'react-select'
 import './home.css';
 import car1 from '../images/car1.jpg'
 import car2 from '../images/car2.jpg'
+import { useNavigate } from "react-router-dom";
   
 // const Home = () => {
 //   return (
@@ -23,15 +24,18 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import { useState } from 'react';
 import axios from 'axios';
+import { useSelector, useDispatch } from "react-redux";
   
 const Home = () => {
-
+    const navigate = useNavigate();
+    const mystate = useSelector((state) => state.changeLoginStatus);
+    console.log(mystate.userStatus);
     const currentYear = (new Date().getFullYear())
     const yearTxt = currentYear === 2022 ? "2022" : "2022 - "+currentYear
 
     const[pickup,setPickUp] = useState("");
     const[drop,setDrop] = useState("");
-    const[when,setWhen] = useState("");
+    const[date,setDate] = useState("");
     const[depart,setDepart] = useState("");
     // const[mpickup,]
     const onInputChangePickUp = event => {
@@ -40,8 +44,8 @@ const Home = () => {
     const onInputChangeDrop = event => {
     setDrop(event.target.value);
     };
-    const onInputChangeWhen = event => {
-        setWhen(event.target.value);
+    const onInputChangeDate = event => {
+        setDate(event.target.value);
         };
     const onInputChangeDepart = event => {
         setDepart(event.target.value);
@@ -50,18 +54,34 @@ const Home = () => {
     
     
 
-    const data = {"pickup":pickup,"drop":drop,"when":when,"depart":depart};
+    const data = {"pickup":pickup,"drop":drop,"date":date,"depart":depart};
     const FormHandle = e => {
         e.preventDefault();
+        if(mystate.userStatus == false){
+          alert("you need to sign in")
+          navigate('/sign-in');
+        }
+        if(mystate.userStatus == true){
         addDataToServer(data)
+        }
     }
     console.log(data);
     const addDataToServer = (cred) => {
         console.log(cred);
-        axios.post("http://localhost:8080/productapi/saveproduct", cred).then(
+        
+        axios.post("http://localhost:8080/api/auth/book", cred).then(
             (response) => {
-                console.log(response);
-                alert("product Added Successfully");
+                console.log(response.status);
+                
+                if(response.status==200 ){
+
+                  setPickUp("");
+                  setDrop("");
+                  setDate("");
+                  setDepart("");
+                }
+                alert("you are redirecting to payment page")
+                navigate('/payment');
             }, (error) => {
                 console.log(error);
                 alert("Operation failed");
@@ -140,14 +160,14 @@ const Home = () => {
             </div><br></br>
             <div id="date" class="date">
               <p id="hint"><strong>Enter Your CheckIn Date</strong></p>
-              <input type="date" class="form-control" name="when" placeholder="Enter date" value={when} onChange={(e) => onInputChangeWhen(e)} />
+              <input type="date" class="form-control" name="date" placeholder="Enter date" value={date} onChange={(e) => onInputChangeDate(e)} />
             </div><br></br>
             <div id="emailsp" class="email">
               <p id="hint"><strong>Enter departure time</strong></p>
               <input type="time" class="form-control" name="depart" placeholder="Enter departing time" value={depart} onChange={(e) => onInputChangeDepart(e)} />
             </div><br></br>
-            <div id="btnsignup" className="btnsignup">
-              <button type="submit" class="btn btn-outline-secondary my-2 text-center mr-2">Book</button>
+            <div id="btnbookbackground" className="btnbook">
+              <button id="b"type="submit" class="btn btn-outline-secondary my-2 text-center mr-2">Book</button>
             </div>
           </form>
         </div>

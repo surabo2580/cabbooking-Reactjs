@@ -95,14 +95,14 @@ const SignUp = () => {
                 </div>
                 <div id="passwordsp" class="password">
                 <p id="hint"><strong>Enter password</strong></p>
-                    <input type="text" class="form-control" name="password"  placeholder="Enter password" value={password} onChange={(e) => onInputChangePassword(e)} />
+                    <input type="password" class="form-control" name="password"  placeholder="Enter password" value={password} onChange={(e) => onInputChangePassword(e)} />
                 </div>
                 <div id="confirmpasswordsp" class="confirmpassword">
                 <p id="hint"><strong>Re-Enter password</strong></p>
-                    <input type="text" class="form-control" name="confirmpassword"  placeholder="Re Enter password" value={confirmpassword} onChange={(e) => onInputChangeConfirmPassword(e)} />
+                    <input type="password" class="form-control" name="confirmpassword"  placeholder="Re Enter password" value={confirmpassword} onChange={(e) => onInputChangeConfirmPassword(e)} />
                 </div><br></br>
                 <div className="btnsignup">
-                    <button type="submit" class="btn btn-outline-secondary my-2 text-center mr-2">Sign Up</button>
+                    <button id="b" type="submit" class="btn btn-outline-secondary my-2 text-center mr-2">Sign Up</button>
                 </div>
             </form>
         </div>

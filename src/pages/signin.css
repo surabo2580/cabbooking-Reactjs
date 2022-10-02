@@ -3,8 +3,8 @@
 } */
 .check-credentials-form{
     margin: auto;
-    height: 300px;
-    width: 130%;
+    height: 350px;
+    width: 140%;
     background-color: rgb(12, 12, 12);
     
 }
@@ -33,11 +33,17 @@
     margin-left: 80px;
    
   }
-  .btnsignin{
+  .btnsigninbackground{
     background-color: rgb(12, 12, 12);
     margin-left: 150px;
 
   }
   #hint{
     color: azure;
+}
+#usertext{
+  margin-right: 80px;
+}
+#passtext{
+  margin-right: 80px;
 }
