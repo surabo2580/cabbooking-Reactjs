@@ -5,6 +5,8 @@ import axios from 'axios';
 import { useNavigate } from "react-router-dom";
   
 const SignUp = () => {
+    const currentYear = (new Date().getFullYear())
+    const yearTxt = currentYear === 2022 ? "2022" : "2022 - "+currentYear
     const navigate = useNavigate();
     const[username,setUserName] = useState("")
     const[firstname,setFirstName] = useState("");
@@ -47,66 +49,71 @@ const SignUp = () => {
         axios.post("http://localhost:8080/api/auth/signup", cred).then(
             (response) => {
                 
+                
                 console.log(response);
-                alert("user Added Successfully");
+                
                 if (response.status==200) {
                     console.log("navigating");
                     navigate('/sign-in');
                 }
             }, (error) => {
                 console.log(error);
-                alert("Operation failed");
+                alert("username or email id exists")
+                navigate("/sign-up")
+                
             }
         );
     }
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'Center',
-        alignItems: 'Center',
-        height: '100vh'
-      }}
-    >
-      
-      <div className='signup'>
-            <form onSubmit={e => FormHandle(e)} class="check-credentials-formsp">
-                
-            <div id="usernamesp" class="username">
-                <p id="hint"><strong>Enter username</strong></p>
-                    <input type="text" class="form-control" name="username"  placeholder="Enter username" value={username} onChange={(e) => onInputChangeUserName(e)} />
-                </div>
-                <div id="firstnamesp" class="firstname">
-                <p id="hint"><strong>Enter first name</strong></p>
-                    <input type="text" class="form-control" name="firstname"  placeholder="Enter First Name" value={firstname} onChange={(e) => onInputChangeFirstName(e)} />
-                </div>
-                <div id="lastnamesp" class="lastname">
-                <p id="hint"><strong>Enter last name</strong></p>
-                    <input type="text" class="form-control" name="lastname"  placeholder="Enter Last Name" value={lastname} onChange={(e) => onInputChangeLastName(e)} />
-                </div>
-                <div id="phonesp" class="phone">
-                <p id="hint"><strong>Enter Number</strong></p>
-                    <input type="number" class="form-control" name="phone"  placeholder="Enter phone" value={phone} onChange={(e) => onInputChangePhone(e)} />
-                </div>
-                <div id="emailsp" class="email">
-                <p id="hint"><strong>Enter email</strong></p>
-                    <input type="text" class="form-control" name="email"  placeholder="Enter email" value={email} onChange={(e) => onInputChangeEmail(e)} />
-                </div>
-                <div id="passwordsp" class="password">
-                <p id="hint"><strong>Enter password</strong></p>
-                    <input type="password" class="form-control" name="password"  placeholder="Enter password" value={password} onChange={(e) => onInputChangePassword(e)} />
-                </div>
-                <div id="confirmpasswordsp" class="confirmpassword">
-                <p id="hint"><strong>Re-Enter password</strong></p>
-                    <input type="password" class="form-control" name="confirmpassword"  placeholder="Re Enter password" value={confirmpassword} onChange={(e) => onInputChangeConfirmPassword(e)} />
-                </div><br></br>
-                <div className="btnsignup">
-                    <button id="b" type="submit" class="btn btn-outline-secondary my-2 text-center mr-2">Sign Up</button>
-                </div>
-            </form>
-        </div>
-    </div>
+    <><div
+          style={{
+              display: 'flex',
+              justifyContent: 'Center',
+              alignItems: 'Center',
+              height: '100vh'
+          }}
+      >
+
+          <div className='signup'>
+              <form onSubmit={e => FormHandle(e)} class="check-credentials-formsp">
+
+                  <div id="usernamesp" class="username">
+                      <p id="hint"><strong>Enter username</strong></p>
+                      <input type="text" class="form-control" name="username" placeholder="Enter username" value={username} onChange={(e) => onInputChangeUserName(e)} required />
+                  </div>
+                  <div id="firstnamesp" class="firstname">
+                      <p id="hint"><strong>Enter first name</strong></p>
+                      <input type="text" class="form-control" name="firstname" placeholder="Enter First Name" value={firstname} onChange={(e) => onInputChangeFirstName(e)} required />
+                  </div>
+                  <div id="lastnamesp" class="lastname">
+                      <p id="hint"><strong>Enter last name</strong></p>
+                      <input type="text" class="form-control" name="lastname" placeholder="Enter Last Name" value={lastname} onChange={(e) => onInputChangeLastName(e)} required />
+                  </div>
+                  <div id="phonesp" class="phone">
+                      <p id="hint"><strong>Enter Number</strong></p>
+                      <input type="number" class="form-control" name="phone" placeholder="Enter phone" value={phone} onChange={(e) => onInputChangePhone(e)} required />
+                  </div>
+                  <div id="emailsp" class="email">
+                      <p id="hint"><strong>Enter email</strong></p>
+                      <input type="text" class="form-control" name="email" placeholder="Enter email" value={email} onChange={(e) => onInputChangeEmail(e)} required />
+                  </div>
+                  <div id="passwordsp" class="password">
+                      <p id="hint"><strong>Enter password</strong></p>
+                      <input type="password" class="form-control" name="password" placeholder="Enter password" value={password} onChange={(e) => onInputChangePassword(e)} required />
+                  </div>
+                  <div id="confirmpasswordsp" class="confirmpassword">
+                      <p id="hint"><strong>Re-Enter password</strong></p>
+                      <input type="password" class="form-control" name="confirmpassword" placeholder="Re Enter password" value={confirmpassword} onChange={(e) => onInputChangeConfirmPassword(e)} required />
+                  </div><br></br>
+                  <div className="btnsignup">
+                      <button id="b" type="submit" class="btn btn-outline-secondary my-2 text-center mr-2">Sign Up</button>
+                  </div>
+              </form>
+          </div>
+      </div><footer class="footer">
+              <p id="footerp">© {yearTxt} Service - Developed by Company</p>
+          </footer></>
   );
 };
 

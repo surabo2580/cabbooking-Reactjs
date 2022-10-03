@@ -6,7 +6,8 @@ import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { changingStatus } from "../Action/index";
 
-const SignIn = () => {
+
+const PasswordChange1 = () => {
     const currentYear = (new Date().getFullYear())
    const yearTxt = currentYear === 2022 ? "2022" : "2022 - "+currentYear
 
@@ -14,40 +15,54 @@ const SignIn = () => {
     console.log(mystate.userStatus);
     const dispatch = useDispatch();
     const navigate = useNavigate();
-    const [username,setUserName] = useState("");
-    const [password,setPassword] = useState("");
+    const [oldPassword,setOldPassword]=useState("");
+    const [newPassword,setNewPassword]=useState("");
 
-    const onInputChangeUserName = event => {
-        setUserName(event.target.value);
+   const onInputChangeOldPassword = event => {
+        setOldPassword(event.target.value);
       };
-    const onInputChangePassword = event => {
-    setPassword(event.target.value);
+    const onInputChangeNewPassword = event => {
+    setNewPassword(event.target.value);
     };
 
-    const data = {"username":username,"password":password};
+    const passwords = {"oldPassword":oldPassword,"newPassword":newPassword};
     const FormHandle = e => {
         e.preventDefault();
-        addDataToServer(data)
+        addDataToServer(passwords)
     }
 
-    const addDataToServer = (cred) => {
-        console.log(cred);
-        axios.post("http://localhost:8080/api/auth/signin", cred).then(
-            (response) => {
-                
-                console.log(response);
-                // alert("user signed in Successfully");
-                if (response.status==200) {
-                  dispatch(changingStatus(true, response.data.id, response.data.username, response.data.accessToken));
-                  console.log("navigating");
-                  navigate('/');
-              }
-            }, (error) => {
-                console.log(error);
-                alert("password or email doesnt match");
-            }
-        );
+    const addDataToServer = (passwords) => {
+        console.log(passwords);
+        axios.put("http://localhost:8080/api/auth/change-password/" + mystate.userid, passwords).then(
+
+
+
+           (response) => {
+                alert("password changed Successfully!");
+                console.log(response.data);
+
+
+
+           }, (error) => {
+
+
+
+               //console.log(error);
+
+
+
+               alert(error.response.data.message);
+
+
+
+           }
+
+
+
+       );
     }
+
+        
 
   return (
     <><div
@@ -83,4 +98,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default PasswordChange1;

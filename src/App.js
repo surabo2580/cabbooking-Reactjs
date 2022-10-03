@@ -8,6 +8,10 @@ import SignIn from './pages/SignIn';
 import Home from './pages/Home';
 import Contact from './pages/Contact';
 import Payment from './pages/Payment';
+import Bookings from './pages/Bookings'
+import PasswordChange from './pages/PasswordChange';
+import ProtectedRoutes from './ProtectedRoutes';
+import ProfileSettings from './ProfileSetting'
   
 function App() {
   return (
@@ -16,10 +20,13 @@ function App() {
       <Routes>
         <Route index element={<Home/>} />
         <Route path='/payment' element={<Payment/>}/>
+        <Route path='/bookings' element={<ProtectedRoutes Components={Bookings}/>}/>
         <Route path='/contact' element={<Contact/>}/>
         <Route path='/about' element={<About/>} />
         <Route path='/sign-in' element={<SignIn/>}/>
-        <Route path='/sign-up' element={<SignUp/>} />
+        <Route path='/sign-up' element={<ProtectedRoutes Components={SignUp}/>} />
+        <Route path='/profile-settings' element={<ProfileSettings/>}/>
+        <Route path='/change-password' element={<ProtectedRoutes Components={PasswordChange}/>} />
       </Routes>
     </Router>
   );

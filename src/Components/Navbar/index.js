@@ -36,12 +36,17 @@ const Navbar = () => {
           <NavLink to='/about' activeStyle>
             About
           </NavLink>
+          <NavLink to='/bookings' activeStyle>
+            Bookings
+          </NavLink>
+
           <NavLink to='/contact' activeStyle>
             Contact
           </NavLink>
+          {!mystate.userStatus&&
           <NavLink to='/sign-up' activeStyle>
             Sign Up
-          </NavLink>
+          </NavLink>}    
           {/* {mystate.userStatus && (< NavBtn onClick={() => dispatch(changingStatus(false, -1, "null", "null"))}>LogOut</NavBtn>)} */}
           {mystate.userStatus===false?
           <NavLink to='/sign-in' activeStyle>
@@ -49,35 +54,28 @@ const Navbar = () => {
 
           </NavLink>:< NavLink style={{color:"white"}} onClick={() => dispatch(changingStatus(false, -1, "null", "null"))}>LogOut</NavLink>
           }
-           {mystate.userStatus && (<NavBtn ><NavBtnLink style={{backgroundColor:"black",color:"white",border:"none"}} to=''><b>{mystate.username}</b></NavBtnLink></NavBtn>)}
+           {/* {mystate.userStatus && (<NavBtn ><NavBtnLink style={{backgroundColor:"black",color:"white",border:"none"}} to=''><b>{mystate.username}</b></NavBtnLink></NavBtn>)} */}
 
 
-           
-
-
-          
-            
-          {mystate.userStatus===true?
-          <div >
+           {mystate.userStatus &&
+           <div >
            <Popup  trigger={<button>{mystate.username}</button>} 
             position="down"><br></br><br></br>
               
               
-              <div style={{backgroundColor:"grey"}} id="popup">{mystate.userStatus && (<NavBtn><NavBtnLink to='/profile'><b>username<br></br>{mystate.username}</b></NavBtnLink></NavBtn>)}</div>
-              <div style={{backgroundColor:"grey"}} id="popup">{mystate.userStatus && (<NavBtn><NavBtnLink to='/profile'><b>profile settings</b></NavBtnLink></NavBtn>)}</div>
-              
-            </Popup>
-            </div>:<div >
-           <Popup  trigger={<button></button>} 
-            position="down"><br></br><br></br>
-              
-              
-              <div style={{backgroundColor:"grey"}} id="popup">{mystate.userStatus && (<NavBtn><NavBtnLink to='/profile'><b>username<br></br>{mystate.username}</b></NavBtnLink></NavBtn>)}</div>
-              <div style={{backgroundColor:"grey"}} id="popup">{mystate.userStatus && (<NavBtn><NavBtnLink to='/profile'><b>profile settings</b></NavBtnLink></NavBtn>)}</div>
+              <div style={{backgroundColor:"grey"}} id="popup">{mystate.userStatus && (<NavBtn><NavBtnLink to='/profile'><b>Username<br></br>{mystate.username}</b></NavBtnLink></NavBtn>)}</div>
+              <div style={{backgroundColor:"grey"}} id="popup">{mystate.userStatus && (<NavBtn><NavBtnLink to='/profile-settings'><b>profile settings</b></NavBtnLink></NavBtn>)}</div>
+              {/* <div style={{backgroundColor:"grey"}} id="popup">{mystate.userStatus && (< NavBtn><NavBtnLink to='/home'>style={{color:"white"}} onClick={() => dispatch(changingStatus(false, -1, "null", "null"))}LogOut</NavBtnLink></NavBtn> )}</div> */}
               
             </Popup>
             </div>
-}
+          }
+            
+          
+          
+            
+          
+
           {/* Second Nav */}
           {/* <NavBtnLink to='/sign-in'>Sign In</NavBtnLink> */}
         </NavMenu>

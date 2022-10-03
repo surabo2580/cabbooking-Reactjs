@@ -3,6 +3,7 @@ import Select from 'react-select'
 import './home.css';
 import car1 from '../images/car1.jpg'
 import car2 from '../images/car2.jpg'
+import car4 from '../images/car4.jpg'
 import { useNavigate } from "react-router-dom";
   
 // const Home = () => {
@@ -54,7 +55,7 @@ const Home = () => {
     
     
 
-    const data = {"pickup":pickup,"drop":drop,"date":date,"depart":depart};
+    const data = {"username":mystate.username,"pickup":pickup,"drop":drop,"date":date,"depart":depart};
     const FormHandle = e => {
         e.preventDefault();
         if(mystate.userStatus == false){
@@ -93,8 +94,9 @@ const Home = () => {
 
     <><>
     <div id="main">
-      <div id="car2">
-        <Card style={{ width: '18rem' }}>
+      <div id="car2"><br></br>
+
+      <Card style={{ width: '18rem' }}>
           <Card.Img variant="bottom" src={car2} />
           <Card.Body>
             <Card.Title>Premium</Card.Title>
@@ -103,10 +105,10 @@ const Home = () => {
             </Card.Text>
             <Button variant="primary">Go</Button>
           </Card.Body>
-        </Card>
+        </Card><br></br>
 
         <Card style={{ width: '18rem' }}>
-          <Card.Img variant="bottom" src={car2} />
+          <Card.Img variant="bottom" src={car4} />
           <Card.Body>
             <Card.Title>Premium</Card.Title>
             <Card.Text>
@@ -114,18 +116,8 @@ const Home = () => {
             </Card.Text>
             <Button variant="primary">Go</Button>
           </Card.Body>
-        </Card>
+        </Card><br></br>
 
-        <Card style={{ width: '18rem' }}>
-          <Card.Img variant="bottom" src={car2} />
-          <Card.Body>
-            <Card.Title>Premium</Card.Title>
-            <Card.Text>
-              sedan
-            </Card.Text>
-            <Button variant="primary">Go</Button>
-          </Card.Body>
-        </Card>
 
         <Card style={{ width: '18rem' }}>
           <Card.Img variant="bottom" src={car1} />
@@ -136,7 +128,7 @@ const Home = () => {
             </Card.Text>
             <Button variant="primary">Go</Button>
           </Card.Body>
-        </Card>
+        </Card><br></br>
       </div><div
         style={{
           display: 'flex',
@@ -152,29 +144,33 @@ const Home = () => {
             <div id="pickup" class="pickup">
               <p id="hint"><strong>Enter pickup point</strong></p>
               {/* <Select id="selectCity"  placeholder="Select City" options={cityList} onChange={handleCityChanges}>City</Select> */}
-              <input type="text" class="form-control" name="pickup" placeholder="Enter pickup point" value={pickup} onChange={(e) => onInputChangePickUp(e)} />
+              <input type="text" class="form-control" name="pickup" placeholder="Enter pickup point" value={pickup} onChange={(e) => onInputChangePickUp(e)} required />
             </div><br></br>
             <div id="lastnamesp" class="lastname">
               <p id="hint"><strong>Enter destination point</strong></p>
-              <input type="text" class="form-control" name="drop" placeholder="Enter destination point" value={drop} onChange={(e) => onInputChangeDrop(e)} />
+              <input type="text" class="form-control" name="drop" placeholder="Enter destination point" value={drop} onChange={(e) => onInputChangeDrop(e)} required />
             </div><br></br>
             <div id="date" class="date">
               <p id="hint"><strong>Enter Your CheckIn Date</strong></p>
-              <input type="date" class="form-control" name="date" placeholder="Enter date" value={date} onChange={(e) => onInputChangeDate(e)} />
+              <input type="date" class="form-control" name="date" placeholder="Enter date" value={date} onChange={(e) => onInputChangeDate(e)} required />
             </div><br></br>
             <div id="emailsp" class="email">
               <p id="hint"><strong>Enter departure time</strong></p>
-              <input type="time" class="form-control" name="depart" placeholder="Enter departing time" value={depart} onChange={(e) => onInputChangeDepart(e)} />
+              <input type="time" class="form-control" name="depart" placeholder="Enter departing time" value={depart} onChange={(e) => onInputChangeDepart(e)} required/>
             </div><br></br>
             <div id="btnbookbackground" className="btnbook">
               <button id="b"type="submit" class="btn btn-outline-secondary my-2 text-center mr-2">Book</button>
+              {/* <button id="b" onClick={()=>navigate('/change-password')} type="submit" class="btn btn-outline-secondary my-2 text-center mr-2">Change Password</button><br></br> */}
+
             </div>
           </form>
         </div>
         </div>
-      </div></><footer class="footer">
+      </div><br></br>
+      <br></br></><footer class="footer">
         <p id="footerp">© {yearTxt} Service - Developed by Company</p>
       </footer></>
+      
   );
 }
 
