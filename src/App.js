@@ -11,7 +11,9 @@ import Payment from './pages/Payment';
 import Bookings from './pages/Bookings'
 import PasswordChange from './pages/PasswordChange';
 import ProtectedRoutes from './ProtectedRoutes';
-import ProfileSettings from './ProfileSetting'
+import ProfileSettings from './ProfileSetting';
+import Book from './pages/Book';
+
   
 function App() {
   return (
@@ -19,14 +21,17 @@ function App() {
       <Navbar />
       <Routes>
         <Route index element={<Home/>} />
-        <Route path='/payment' element={<Payment/>}/>
+        <Route path='/payment' element={<ProtectedRoutes Components={Payment}/>}/>
         <Route path='/bookings' element={<ProtectedRoutes Components={Bookings}/>}/>
         <Route path='/contact' element={<Contact/>}/>
         <Route path='/about' element={<About/>} />
         <Route path='/sign-in' element={<SignIn/>}/>
-        <Route path='/sign-up' element={<ProtectedRoutes Components={SignUp}/>} />
+        <Route path='/sign-up' element={<SignUp/>} />
+        <Route path='/book' element={<Book/>} />
         <Route path='/profile-settings' element={<ProfileSettings/>}/>
         <Route path='/change-password' element={<ProtectedRoutes Components={PasswordChange}/>} />
+        
+
       </Routes>
     </Router>
   );

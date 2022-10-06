@@ -1,0 +1,12 @@
+#payment{
+    display: flex;
+    align-content: center;
+    justify-content: space-around;
+    
+}
+.qrcode{
+    padding-top: 40px;
+    display: flex;
+    align-content: center;
+    justify-content: space-around;
+}

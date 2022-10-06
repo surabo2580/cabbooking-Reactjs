@@ -67,13 +67,18 @@ const Home = () => {
     const[drop,setDrop] = useState("");
     const[distance,setDistance]=useState(9);
     const[fixedPrice,setFixedPrice]=useState(20);
-    let[price,setprice]=useState(0);
+    const[price,setprice]=useState(0);
     // const [map, setMap] = useState(/** @type google.maps.Map */ (null))
     // const [directionsResponse, setDirectionsResponse] = useState(null)
     const[date,setDate] = useState("");
     const[depart,setDepart] = useState("");
     const fixedRatePerKm = 20;
-    
+    if (pickup=="gachibowli" && drop=="hitex city"){
+        setDistance(5);
+    }
+    console.log("pickup",pickup)
+    console.log("price",price);
+    console.log("distance",distance);
     // const[mpickup,]
     // const pickup = useRef()
     // const drop = useRef()
@@ -92,36 +97,31 @@ const Home = () => {
     
     
     
-    
 
-    const data = {"username":mystate.username,"pickup":pickup,"drop":drop,"date":date,"depart":depart,"distance":distance,"price":price};
+    const data = {"username":mystate.username,"pickup":pickup,"drop":drop,"date":date,"depart":depart,"distance":distance};
     const FormHandle = e => {
         e.preventDefault();
-        if(mystate.userStatus == false){
-          alert("you need to sign in")
-          navigate('/sign-in');
-        }
+        // if(mystate.userStatus == false){
+        //   alert("you need to sign in")
+        //   navigate('/sign-in');
+        // }
         if (pickup=="banjara hills" && drop=="hitex city"){
-          //setDistance(9);
-          setprice(price+=fixedRatePerKm*distance);
-          data.price=price;
-          console.log("price new ++++",price);
-        }
+            //setDistance(9);
+            setprice(fixedRatePerKm*distance);
+            console.log("price new ++++",price);
     
-      
-        if(mystate.userStatus == true){
-          console.log("calling server to add",data.depart)
-        addDataToServer(data)
         }
+        // if(mystate.userStatus == true){
+        // addDataToServer(data)
+        // }
     }
-    console.log("++++++data",data.price);
-    const addDataToServer = (data) => {
-        console.log("++++---000",data.price);
+    console.log("++++++data",data);
+    const addDataToServer = (cred) => {
+        console.log(cred);
         
-        axios.post("http://localhost:8080/api/auth/book", data).then(
+        axios.post("http://localhost:8080/api/auth/book", cred).then(
             (response) => {
-                console.log("status+++++",response.status);
-                console.log("response",response)
+                console.log(response.status);
                 
                 if(response.status==200 ){
 

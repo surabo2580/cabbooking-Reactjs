@@ -12,6 +12,7 @@
     color: azure;
 }
 .check-credentials-book{
+    padding-right: 10px;
     border-radius: 10px;
     margin: auto;
     height: 500px;
@@ -28,6 +29,7 @@
     color:red;
 }
 #main{
+    
     display: flex;
     align-content: center;
     justify-content: space-around;
@@ -45,4 +47,14 @@
 }
 #main{
     background-color:rgb(250, 247, 247);
+}
+.home{
+    margin-right: 50px;
+}
+#tours{
+    background-color: black;
+    display: flex;
+    align-content: center;
+    justify-content: space-around;
+    
 }

@@ -54,12 +54,13 @@ const SignUp = () => {
                 
                 if (response.status==200) {
                     console.log("navigating");
-                    navigate('/sign-in');
+                    alert("signed up successfully");
+                   
                 }
             }, (error) => {
                 console.log(error);
-                alert("username or email id exists")
-                navigate("/sign-up")
+                alert("username or email id exists");
+                
                 
             }
         );
