@@ -13,6 +13,7 @@ import PasswordChange from './pages/PasswordChange';
 import ProtectedRoutes from './ProtectedRoutes';
 import ProfileSettings from './ProfileSetting';
 import Book from './pages/Book';
+import ForgetPassword from './pages/ForgetPassword';
 
   
 function App() {
@@ -30,6 +31,7 @@ function App() {
         <Route path='/book' element={<Book/>} />
         <Route path='/profile-settings' element={<ProfileSettings/>}/>
         <Route path='/change-password' element={<ProtectedRoutes Components={PasswordChange}/>} />
+        <Route path='/forgetpassword' element={<ForgetPassword/>} />
         
 
       </Routes>

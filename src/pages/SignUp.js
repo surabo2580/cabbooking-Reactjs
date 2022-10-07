@@ -54,7 +54,15 @@ const SignUp = () => {
                 
                 if (response.status==200) {
                     console.log("navigating");
+                    setUserName("");
+                    setEmail("");
+                    setConfirmPassword("");
+                    setFirstName("");
+                    setLastName("");
+                    setPhone("");
+                    setPassword("");
                     alert("signed up successfully");
+                    navigate('/')
                    
                 }
             }, (error) => {

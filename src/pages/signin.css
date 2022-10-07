@@ -47,3 +47,7 @@
 #passtext{
   margin-right: 80px;
 }
+.error
+{
+    color:red;
+}
